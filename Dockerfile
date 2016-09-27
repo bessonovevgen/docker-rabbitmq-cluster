@@ -1,4 +1,4 @@
-FROM rabbitmq:3-management
+FROM rabbitmq:management
 MAINTAINER Kunaruk Osatapirat osataken@gmail.com
 
 RUN rabbitmq-plugins enable --offline rabbitmq_shovel
