@@ -16,6 +16,11 @@ else
     rabbitmqctl stop_app
     echo "Joining cluster $CLUSTER_WITH"
     rabbitmqctl join_cluster ${ENABLE_RAM:+--ram} $RABBITMQ_NODENAME@$CLUSTER_WITH
+
+    echo "Enable Mirror"
+    # Mirror
+    rabbitmqctl set_policy all '^.*' '{"ha-mode": "all"}' -p /
+
     rabbitmqctl start_app
   fi;
   # Tail to keep the a foreground process active..
