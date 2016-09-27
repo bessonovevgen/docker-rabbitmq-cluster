@@ -4,7 +4,8 @@ services:
     image: rabbit-cluster
     hostname: rabbit1
     environment:
-      - ERLANG_COOKIE=abcdefg
+      - ERLANG_COOKIE=thisissomesecretpleasechangeitinenviron
+      - RABBITMQ_HIPE_COMPILE=1
     ports:
       - "5672:5672"
       - "15672:15672"
@@ -14,9 +15,10 @@ services:
     depends_on: 
       - rabbit1
     environment:
-      - ERLANG_COOKIE=abcdefg
+      - ERLANG_COOKIE=thisissomesecretpleasechangeitinenviron
       - CLUSTER_WITH=rabbit1
       - ENABLE_RAM=true
+      - RABBITMQ_HIPE_COMPILE=1
     ports:
       - "5673:5672"
   rabbit3:
@@ -25,7 +27,8 @@ services:
     depends_on: 
       - rabbit1
     environment:
-      - ERLANG_COOKIE=abcdefg
+      - ERLANG_COOKIE=thisissomesecretpleasechangeitinenviron
       - CLUSTER_WITH=rabbit1
+      - RABBITMQ_HIPE_COMPILE=1
     ports:
       - "5674:5672"
