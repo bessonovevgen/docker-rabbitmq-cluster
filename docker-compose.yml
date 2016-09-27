@@ -2,7 +2,6 @@ version: '2'
 services:
   rabbit1:
     image: rabbit-cluster
-    command: rabbitmq-server
     hostname: rabbit1
     environment:
       - ERLANG_COOKIE=abcdefg
@@ -12,7 +11,6 @@ services:
       - "15672:15672"
   rabbit2:
     image: rabbit-cluster
-    command: rabbitmq-server
     hostname: rabbit2
     depends_on: 
       - rabbit1
@@ -25,7 +23,6 @@ services:
       - "5673:5672"
   rabbit3:
     image: rabbit-cluster
-    command: rabbitmq-server
     hostname: rabbit3
     depends_on: 
       - rabbit1
@@ -36,8 +33,7 @@ services:
     ports:
       - "5674:5672"
   rabbit4:                         
-    image: rabbit-cluster          
-    command: rabbitmq-server       
+    image: rabbit-cluster           
     hostname: rabbit4              
     depends_on:                    
       - rabbit1                    
@@ -46,4 +42,5 @@ services:
       - CLUSTER_WITH=rabbit1       
       - RABBITMQ_HIPE_COMPILE=1    
     ports:                         
-      - "5675:5672"                
+      - "5675:5672"              
+
