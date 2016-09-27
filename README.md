@@ -5,7 +5,7 @@ Docker images to run RabbitMQ cluster. It extends the official image with a rabb
 Once you clone the project locally use [captain](https://github.com/harbur/captain) to build the image or do with docker:
 
 ```
-docker build -t harbur/rabbitmq-cluster .
+docker build -t rabbitmq-cluster .
 ```
 
 # Running with docker-compose

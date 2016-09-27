@@ -2,20 +2,22 @@ version: '2'
 services:
   rabbit1:
     image: rabbit-cluster
+    command: rabbitmq-server
     hostname: rabbit1
     environment:
-      - ERLANG_COOKIE=thisissomesecretpleasechangeitinenviron
+      - ERLANG_COOKIE=abcdefg
       - RABBITMQ_HIPE_COMPILE=1
     ports:
       - "5672:5672"
       - "15672:15672"
   rabbit2:
     image: rabbit-cluster
+    command: rabbitmq-server
     hostname: rabbit2
     depends_on: 
       - rabbit1
     environment:
-      - ERLANG_COOKIE=thisissomesecretpleasechangeitinenviron
+      - ERLANG_COOKIE=abcdefg
       - CLUSTER_WITH=rabbit1
       - ENABLE_RAM=true
       - RABBITMQ_HIPE_COMPILE=1
@@ -23,12 +25,25 @@ services:
       - "5673:5672"
   rabbit3:
     image: rabbit-cluster
+    command: rabbitmq-server
     hostname: rabbit3
     depends_on: 
       - rabbit1
     environment:
-      - ERLANG_COOKIE=thisissomesecretpleasechangeitinenviron
+      - ERLANG_COOKIE=abcdefg
       - CLUSTER_WITH=rabbit1
       - RABBITMQ_HIPE_COMPILE=1
     ports:
       - "5674:5672"
+  rabbit4:                         
+    image: rabbit-cluster          
+    command: rabbitmq-server       
+    hostname: rabbit4              
+    depends_on:                    
+      - rabbit1                    
+    environment:                   
+      - ERLANG_COOKIE=abcdefg      
+      - CLUSTER_WITH=rabbit1       
+      - RABBITMQ_HIPE_COMPILE=1    
+    ports:                         
+      - "5675:5672"                
