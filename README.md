@@ -33,3 +33,4 @@ Once cluster is up:
 # Credits
 
 * Inspired by https://github.com/bijukunjummen/docker-rabbitmq-cluster
+* Some Russian Docs add to [this file](./docs/RU-README.md)
