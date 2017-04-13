@@ -13,7 +13,7 @@ docker build -t rabbitmq-cluster .
 If you want to run the cluster on one machine use [docker-compose](https://github.com/docker/compose/)
 
 ```
-docker-compose up -d
+export PASSWD=yourareonlyone && docker-compose up -d
 ```
 
 By default 4 nodes are started up this way:

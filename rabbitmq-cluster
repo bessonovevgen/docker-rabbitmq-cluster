@@ -6,6 +6,13 @@ RABBITMQ_NODENAME=${RABBITMQ_NODENAME:-rabbit}
 if [ -z "$CLUSTER_WITH" ]; then
   echo "Running as single server"
   rabbitmq-server
+
+  rabbitmqctl add_user $ADMIN $PASSWD
+
+  rabbitmqctl set_user_tags $ADMIN administrator
+
+  rabbitmqctl set_permissions -p / $ADMIN ".*" ".*" ".*"
+
 else
   echo "Running as clustered server"
   /usr/sbin/rabbitmq-server -detached
