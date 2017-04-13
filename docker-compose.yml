@@ -1,8 +1,7 @@
 version: '2'
 services:
   rabbit1:
-    #build: ./
-    image: hollligan/docker-rabbitmq-cluster
+    build: ./
     hostname: rabbit1
     environment:
       - ERLANG_COOKIE=abcdefg
@@ -13,8 +12,7 @@ services:
       - "5672:5672"
       - "15672:15672"
   rabbit2:
-    #build: ./
-    image: hollligan/docker-rabbitmq-cluster
+    build: ./
     hostname: rabbit2
     depends_on: 
       - rabbit1
@@ -26,8 +24,7 @@ services:
     ports:
       - "5673:5672"
   rabbit3:
-    #build: ./
-    image: hollligan/docker-rabbitmq-cluster
+    build: ./
     hostname: rabbit3
     depends_on: 
       - rabbit1
@@ -38,8 +35,7 @@ services:
     ports:
       - "5674:5672"
   rabbit4:                         
-    #build: ./
-    image: hollligan/docker-rabbitmq-cluster           
+    build: ./
     hostname: rabbit4              
     depends_on:                    
       - rabbit1                    
@@ -49,4 +45,3 @@ services:
       - RABBITMQ_HIPE_COMPILE=1    
     ports:                         
       - "5675:5672"              
-
