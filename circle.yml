@@ -1,0 +1,13 @@
+machine:
+  services:
+    - docker
+
+dependencies:
+  override:
+    - docker info
+
+test:
+  override:
+    - docker build -t silverbulleters/docker-rmq-cluster .
+    - docker run -d --hostname rabbit01 --name rabbit01 silverbulleters/docker-rmq-cluster; sleep 10
+    - docker exec -it rabbit01 rabbitmqctl status
