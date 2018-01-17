@@ -9,5 +9,5 @@ dependencies:
 test:
   override:
     - docker build -t silverbulleters/docker-rmq-cluster .
-    - docker run -d --hostname rabbit01 --name rabbit01 silverbulleters/docker-rmq-cluster; sleep 10
+    - docker run -d --hostname rabbit01 --name rabbit01 -e RABBITMQ_ERLANG_COOKIE='E3r4l6a8n5g' silverbulleters/docker-rmq-cluster; sleep 10
     - docker run -it -e RABBITMQ_ERLANG_COOKIE='E3r4l6a8n5g' --link rabbit01:rabbit01 silverbulleters/docker-rmq-cluster rabbitmqctl -n rabbit@rabbit01 status
