@@ -10,4 +10,7 @@ test:
   override:
     - docker build -t silverbulleters/docker-rmq-cluster .
     - docker run -d --hostname rabbit01 --name rabbit01 silverbulleters/docker-rmq-cluster; sleep 10
-    - docker exec -it rabbit01 rabbitmqctl status
+    - docker run -it --rm \
+        -e RABBITMQ_ERLANG_COOKIE='E3r4l6a8n5g' \
+        --link rabbit01:rabbit01 \
+        silverbulleters/docker-rmq-cluster rabbitmqctl -n rabbti@rabbit01 status
