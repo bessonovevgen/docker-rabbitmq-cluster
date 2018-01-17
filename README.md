@@ -1,3 +1,5 @@
+[![CircleCI](https://circleci.com/gh/bessonovevgen/docker-rabbitmq-cluster/tree/master.svg?style=svg)](https://circleci.com/gh/bessonovevgen/docker-rabbitmq-cluster/tree/master)
+
 Docker images to run RabbitMQ cluster. It extends the official image with a rabbitmq-cluster script that does the magic.
 
 # Building
